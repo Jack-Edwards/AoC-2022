@@ -29,8 +29,8 @@ fn main() {
         }
     }
 
-    let sorted_elf_calories = sort_vector(elf_calories);
-    let total_calories_top_three_elves: i32 = sorted_elf_calories[0..3].iter().sum();
+    sort_vector(&mut elf_calories);
+    let total_calories_top_three_elves: i32 = elf_calories[0..3].iter().sum();
 
     println!("The three elves carrying the most calories are carrying a total of {} calories", total_calories_top_three_elves);
 }
@@ -62,7 +62,7 @@ where T: AsRef<Path>, {
     Ok(io::BufReader::new(file).lines())
 }
 
-fn sort_vector(mut vector: Vec<i32>) -> Vec<i32> {
+fn sort_vector(vector: &mut Vec<i32>) {
     for i in 0..vector.len() {
         let mut j = i + 1;
         while j < vector.len() {
@@ -74,5 +74,4 @@ fn sort_vector(mut vector: Vec<i32>) -> Vec<i32> {
             j += 1;
         }
     }
-    return vector;
 }
